@@ -1,8 +1,8 @@
-Sample integration of [Helix Publishing Pipeline](https://github.com/richardszalay/helix-publishing-pipeline) into [Helixbase](https://github.com/muso31/Helixbase), primarily to outline the difference in build times.
+**Update**: Helixbase now ships with HPP, so you get all the build performance benefits listed below just by using the [latest version of Helixbase](https://github.com/muso31/Helixbase). This page repository will remain for comparison's sake.
 
 ## Benchmarks
 
-Below are the average build times from Helixbase's (HB) default Gulp-based scripts vs building from within Visual Studio using Helix Publishing Pipeline (HPP) with auto-publishing enabled.
+Below are the average build times from Helixbase's (HB) legacy Gulp-based scripts vs building from within Visual Studio using Helix Publishing Pipeline (HPP) with auto-publishing enabled.
 
 | Mode | Clean (secs) | Subsequent no changes (secs) | Feature content change (secs) | Feature code change (secs) |
 | --- | --- | --- | --- | --- |
