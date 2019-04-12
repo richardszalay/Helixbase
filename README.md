@@ -12,7 +12,7 @@ Below are the average build times from Helixbase's (HB) legacy Gulp-based script
 
 NOTE: The timing methods used were very non scientific, but the differences make any sub-second errors irrelevant anyway.
 
-There are a number of reasons of the large discrepency:
+There are a number of reasons for the large discrepency:
 
 * HB's "Publish-All-Projects" publishes individual projects after building the solution, effectively building all of the projects twice
 * HB publishes each individual project, whereas HPP only invokes the publishing pipeline once
