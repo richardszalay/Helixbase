@@ -4,11 +4,13 @@
 
 Below are the average build times from Helixbase's (HB) legacy Gulp-based scripts vs building from within Visual Studio using Helix Publishing Pipeline (HPP) with auto-publishing enabled.
 
-| Mode | Clean (secs) | Subsequent no changes (secs) | Feature content change (secs) | Feature code change (secs) |
+| Mode | Clean (secs) | Subsequent no changes (secs) | Feature view/content change (secs) | Feature code change (secs) |
 | --- | --- | --- | --- | --- |
 |HB+Gulp "Publish-All-Projects"|135|49|57|66|
 |HB+Gulp "Publish-Feature-Layer"|N/A|12|14|16|
-|HB+HPP "CTRL+SHIFT+B"|60|4|5|9|
+|HB+HPP "CTRL+SHIFT+B"|60|4<sup title="No AppPool recycle"> ⚡</sup>|5<sup title="No AppPool recycle"> ⚡</sup>|9|
+
+<sup>⚡</sup> No AppPool recycle
 
 NOTE: The timing methods used were very non scientific, but the differences make any sub-second errors irrelevant anyway.
 
