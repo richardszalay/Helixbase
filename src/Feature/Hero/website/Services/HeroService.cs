@@ -3,6 +3,7 @@ using Helixbase.Feature.Hero.Models;
 using Helixbase.Foundation.Content.Repositories;
 using Helixbase.Foundation.Logging.Repositories;
 using Helixbase.Foundation.Search.Models;
+using Sitecore.ContentSearch;
 using Sitecore.ContentSearch.Linq.Utilities;
 using Sitecore.Data.Items;
 
@@ -28,6 +29,7 @@ namespace Helixbase.Feature.Hero.Services
         /// <returns>The Hero datasource item from the Content API</returns>
         public IHero GetHeroItems()
         {
+            _logRepository.Debug("GetHeroItems");
             var dataSource = _renderingRepository.GetDataSourceItem<IHero>();
 
             // Basic example of using the wrapped logger
@@ -47,14 +49,14 @@ namespace Helixbase.Feature.Hero.Services
             // First setup your predicate
             var predicate = PredicateBuilder.True<BaseSearchResultItem>();
             predicate = predicate.And(item => item.Templates.Contains(Constants.Hero.TemplateId));
-            predicate = predicate.And(item => !item.Name.Equals("__Standard Values"));
+          //  predicate = predicate.And(item => !item.Name.Equals("__Standard Values"));
 
             // We could set the index manually using the line below (do not use magic strings, sample only)
-            // var index = ContentSearchManager.GetIndex($"Helixbase_{_contextRepository.GetDatabaseContext()}_index");
+            var index = ContentSearchManager.GetIndex($"sitecore_{_contextRepository.GetDatabaseContext()}_index");
             // OR we could automate retrieval of the context index:
-            var contextIndex = _contextRepository.GetSearchIndexContext(_contextRepository.GetCurrentItem<Item>());
+         //   var contextIndex = _contextRepository.GetSearchIndexContext(_contextRepository.GetCurrentItem<Item>());
 
-            using (var context = contextIndex.CreateSearchContext())
+            using (var context = index.CreateSearchContext())
             {
                 var result = context.GetQueryable<BaseSearchResultItem>().Where(predicate).First();
 

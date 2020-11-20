@@ -40,5 +40,7 @@ namespace Helixbase.Feature.Hero.Mediators
 
             return _mediatorService.GetMediatorResponse(MediatorCodes.HeroResponse.Ok, viewModel);
         }
+
+     
     }
 }
