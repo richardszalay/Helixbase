@@ -8,27 +8,24 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
- 
+using SC = Sitecore.Configuration;
 
 namespace Helixbase.Feature.AliStorage
 {
     public class AliStorageProvider : CloudStorageBase
     {
         private static OssClient _client;
-        private string _bucketName;
-        private string _accessKeyId;
-        private string _accessKeySecret;
-        private string _endpoint;
-        private readonly ILogRepository _logRepository;
+        private static readonly string _bucketName= SC.Settings.GetSetting("AliStorage.bucketName");
+        private static readonly string _accessKeyId = SC.Settings.GetSetting("AliStorage.accessKeyId");
+        private static readonly string _accessKeySecret= SC.Settings.GetSetting("AliStorage.accessKeySecret");
+        private static readonly string _endpoint= SC.Settings.GetSetting("AliStorage.endpoint");
+        private   ILogRepository _logRepository;
         #region ctor
-        public AliStorageProvider(ILogRepository logRepository,
-            string bucketName, string accessKeyId, string accessKeySecret,string endpoint)
+        public AliStorageProvider(ILogRepository logRepository
+           )
         {
             _logRepository = logRepository;
-            _bucketName = bucketName;
-            _accessKeyId = accessKeyId;
-            _accessKeySecret = accessKeySecret;
-            _endpoint = endpoint;
+            
             this.Initialize();
         }
 
