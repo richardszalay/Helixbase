@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+	<ApplicationIcon />
+	<OutputType>Library</OutputType>
+	<StartupObject />
+	<Authors>Neil Shack</Authors>
+	<Company>Ethisys Ltd</Company>
+  </PropertyGroup>
+ 
+  
+    
+  <ItemGroup>
+ 
+    <Content Include="obj\Helixbase.Foundation.CloudStorage.csproj.nuget.dgspec.json" />
+ 
+    <Content Include="obj\project.assets.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="obj\Debug\Helixbase.Foundation.CloudStorage.csprojAssemblyReference.cache" />
+    <None Include="obj\Debug\net48\Helixbase.Foundation.CloudStorage.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net48\Helixbase.Foundation.CloudStorage.assets.cache" />
+    <None Include="obj\Debug\net48\Helixbase.Foundation.CloudStorage.csprojAssemblyReference.cache" />
+    <None Include="obj\Debug\net48\Helixbase.Foundation.Search.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net48\Helixbase.Foundation.Search.assets.cache" />
+    <None Include="obj\Debug\net48\Helixbase.Foundation.Search.csproj.CopyComplete" />
+    <None Include="obj\Debug\net48\Helixbase.Foundation.Search.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\net48\Helixbase.Foundation.Search.csprojAssemblyReference.cache" />
+    <None Include="obj\Debug\net48\Helixbase.Foundation.Search.dll" />
+    <None Include="obj\Debug\net48\Helixbase.Foundation.Search.pdb" />
+    <None Include="obj\Debug\net48\Helixbase.Foundation.Stats.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net48\Helixbase.Foundation.Stats.assets.cache" />
+    <None Include="obj\Debug\net48\Helixbase.Foundation.Stats.csproj.CopyComplete" />
+    <None Include="obj\Debug\net48\Helixbase.Foundation.Stats.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\net48\Helixbase.Foundation.Stats.csprojAssemblyReference.cache" />
+    <None Include="obj\Debug\net48\Helixbase.Foundation.Stats.dll" />
+    <None Include="obj\Debug\net48\Helixbase.Foundation.Stats.pdb" />
+    <None Include="obj\Helixbase.Foundation.CloudStorage.csproj.nuget.g.props" />
+    <None Include="obj\Helixbase.Foundation.CloudStorage.csproj.nuget.g.targets" />
+    <None Include="obj\Helixbase.Foundation.Search.csproj.nuget.g.props" />
+    <None Include="obj\Helixbase.Foundation.Search.csproj.nuget.g.targets" />
+    <None Include="obj\Helixbase.Foundation.Stats.csproj.nuget.g.props" />
+    <None Include="obj\Helixbase.Foundation.Stats.csproj.nuget.g.targets" />
+    <None Include="obj\project.nuget.cache" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Sitecore.Kernel" Version="10.0.0" />
+  </ItemGroup>
+</Project>

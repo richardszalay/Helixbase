@@ -15,7 +15,7 @@ namespace Helixbase.Feature.Hero.Routes
         /// <param name="args"></param>
         public void Process(PipelineArgs args)
         {
-            RouteTable.Routes.MapRoute("Feature.Hero", "ApiTest/CustomRoute/Hero/{someParam}",
+            RouteTable.Routes.MapRoute("Feature.Hero", "api/sitecore/Hero/{someParam}",
                 new { controller = "HeroAPI", action = "TestAction", someParam = RouteParameter.Optional });
         }
     }
