@@ -19,11 +19,12 @@ namespace Helixbase.Feature.AliStorage
         private string _accessKeyId;
         private string _accessKeySecret;
         private string _endpoint;
- 
+        private readonly ILogRepository _logRepository;
         #region ctor
-        public AliStorageProvider(string bucketName, string accessKeyId, string accessKeySecret,string endpoint)
+        public AliStorageProvider(ILogRepository logRepository,
+            string bucketName, string accessKeyId, string accessKeySecret,string endpoint)
         {
- 
+            _logRepository = logRepository;
             _bucketName = bucketName;
             _accessKeyId = accessKeyId;
             _accessKeySecret = accessKeySecret;
@@ -61,7 +62,7 @@ namespace Helixbase.Feature.AliStorage
                 }
             }
 
-            Sitecore.Diagnostics.Log.Info("File successfully uploaded to  Ali OSS Storage: " + filename, this);
+            _logRepository.Info("File successfully uploaded to  Ali OSS Storage: " + filename);
 
             return filename;
         }
@@ -86,11 +87,12 @@ namespace Helixbase.Feature.AliStorage
                var result = _client.DeleteObject(_bucketName, filename);
             if (result.DeleteMarker)
             {
+                _logRepository.Info("File successfully deleted from  Ali OSS Storage: " + filename);
                 return true;
             }
             else
             {
-
+                _logRepository.Info("File failed deleted from  Ali OSS Storage: " + filename);
                 return false;
             }
         }

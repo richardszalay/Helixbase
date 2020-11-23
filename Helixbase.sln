@@ -103,6 +103,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sitemap", "Sitemap", "{C5E4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helixbase.Feature.Sitemap", "src\Feature\Sitemap\website\Helixbase.Feature.Sitemap.csproj", "{E6A38F16-8055-4B11-A542-A1D0F971EC3F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Akamai", "Akamai", "{822A45E8-8CAB-4EF0-B26A-5EC5C820358B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helixbase.Feature.Akamai", "src\Feature\Akamai\website\Helixbase.Feature.Akamai.csproj", "{3B915562-A341-4BD9-B017-B4E1AAAB6B32}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -197,6 +201,10 @@ Global
 		{E6A38F16-8055-4B11-A542-A1D0F971EC3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6A38F16-8055-4B11-A542-A1D0F971EC3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6A38F16-8055-4B11-A542-A1D0F971EC3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B915562-A341-4BD9-B017-B4E1AAAB6B32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B915562-A341-4BD9-B017-B4E1AAAB6B32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B915562-A341-4BD9-B017-B4E1AAAB6B32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B915562-A341-4BD9-B017-B4E1AAAB6B32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -244,6 +252,8 @@ Global
 		{7A49330D-AB87-4A1F-A0EB-54CAE00C9C36} = {574ABB38-3FC1-48D3-A9EA-E5CABBCAB849}
 		{C5E4A8CA-9ECF-4193-86C5-057F6A9EDB04} = {60DA3F20-DEED-4580-AE38-A296D76ADE79}
 		{E6A38F16-8055-4B11-A542-A1D0F971EC3F} = {C5E4A8CA-9ECF-4193-86C5-057F6A9EDB04}
+		{822A45E8-8CAB-4EF0-B26A-5EC5C820358B} = {60DA3F20-DEED-4580-AE38-A296D76ADE79}
+		{3B915562-A341-4BD9-B017-B4E1AAAB6B32} = {822A45E8-8CAB-4EF0-B26A-5EC5C820358B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {845F548C-FD53-4C61-AB7F-953C2225A13B}
