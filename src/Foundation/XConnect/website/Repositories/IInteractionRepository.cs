@@ -15,7 +15,13 @@ namespace Helixbase.Foundation.XConnect.Repositories
             Contact contact,
             string channelId, string goalId,
             IpInfo ipInfo, DateTime? eventTime = null);
+        Task<Interaction> RegisterOutcomeInteraction(XConnectClientConfiguration cfg,
+          Contact contact,string channelId, string outcomeId, string currentcyCode, 
+          decimal monetaryValue, DateTime? eventTime = null);
+        Task<Interaction> RegisterPageviewInteraction(XConnectClientConfiguration cfg,
+            Contact contact, string channelId, string goalId, Guid itemId, int itemVersion, string language, TimeSpan duration,
 
+            WebVisit webVisit, DateTime? eventTime);
         Task<Interaction> GetInteraction(XConnectClientConfiguration cfg,
             Guid contactId, Guid interactionId);
 

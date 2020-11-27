@@ -98,6 +98,95 @@ namespace Helixbase.Foundation.XConnect.Repositories
 
 		}
 
+		public async Task<Interaction> RegisterOutcomeInteraction(XConnectClientConfiguration cfg,
+			Contact contact, string channelId, string outcomeId,string currentcyCode,decimal monetaryValue, 
+		 DateTime? eventTime)
+		{
+			var interactionTimestamp = eventTime.HasValue ? eventTime.Value : DateTime.UtcNow;
+			_LogRepository.Debug("Creating interaction for contact with ID: '{0}'. Channel: '{1}'. Goal: '{2}'. Time: '{3}'", contact.Id, channelId, outcomeId, interactionTimestamp);
+
+			using (var client = new XConnectClient(cfg))
+			{
+				try
+				{
+
+					var interaction = new Interaction(contact, InteractionInitiator.Brand, Guid.Parse(channelId), "");
+
+
+					var outcome = new Outcome(Guid.Parse(outcomeId), interactionTimestamp, currentcyCode, monetaryValue);
+					interaction.Events.Add(outcome);
+
+
+					 
+ 
+					client.AddInteraction(interaction);
+
+					//Submit the interaction
+					await client.SubmitAsync();
+
+
+
+					return interaction;
+				}
+				catch (XdbExecutionException ex)
+				{
+
+					_LogRepository.Error("Exception creating interaction", ex);
+				}
+			}
+
+			return null;
+		}
+
+        public async Task<Interaction> RegisterPageviewInteraction(XConnectClientConfiguration cfg,
+			Contact contact, string channelId,string goalId, Guid itemId,int itemVersion,string language,TimeSpan duration,
+			
+			WebVisit webVisit, DateTime? eventTime)
+        {
+			var interactionTimestamp = eventTime.HasValue ? eventTime.Value : DateTime.UtcNow;
+			_LogRepository.Debug("RegisterPageviewInteraction for contact with ID: '{0}'. Channel: '{1}'. itemId: '{2}'. Time: '{3}'", contact.Id, channelId, itemId, interactionTimestamp);
+
+			using (var client = new XConnectClient(cfg))
+			{
+				try
+				{
+
+					var webInteraction = new Interaction(contact, InteractionInitiator.Brand, Guid.Parse(channelId), "");
+
+
+					PageViewEvent pageView = new PageViewEvent(interactionTimestamp, 
+						 itemId, itemVersion, language);
+					pageView.ItemLanguage = language;
+					pageView.Duration = duration;
+
+					webInteraction.Events.Add(pageView);
+
+					Goal goal = new Goal(Guid.Parse(goalId), interactionTimestamp);
+
+					goal.ParentEventId = pageView.Id;
+
+					webInteraction.Events.Add(goal);
+		 
+					client.SetWebVisit(webInteraction, webVisit);
+					client.AddInteraction(webInteraction);
+
+					//Submit the interaction
+					await client.SubmitAsync();
+
+
+
+					return webInteraction;
+				}
+				catch (XdbExecutionException ex)
+				{
+
+					_LogRepository.Error("Exception creating interaction", ex);
+				}
+			}
+
+			return null;
+		}
+
         public async Task<List<Interaction>> SearchInteractionsByDate(XConnectClientConfiguration cfg, 
 			DateTime startDate, DateTime endDate)
         {
