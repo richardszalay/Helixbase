@@ -60,13 +60,13 @@ namespace Helixbase.Foundation.XConnect.Repositories
 
 		}
 
-        public async Task<Contact> DeleteContact(XConnectClientConfiguration cfg, string identifierId)
+        public async Task<Contact> DeleteContact(XConnectClientConfiguration cfg, string source,string identifierId)
 		{
 			_LogRepository.Debug("Deleting Contact with Identifier:" + identifierId);
 
  
  
-			var existingContact = await GetContact(cfg, identifierId);
+			var existingContact = await GetContact(cfg, source,identifierId);
 			if (existingContact != null)
 			{
 				using (var client = new XConnectClient(cfg))
@@ -95,12 +95,12 @@ namespace Helixbase.Foundation.XConnect.Repositories
 
 		}
 
-        public async Task<Contact> GetContact(XConnectClientConfiguration cfg, string identifierId)
+        public async Task<Contact> GetContact(XConnectClientConfiguration cfg, string source,string identifierId)
         {
-			return await GetContactWithInteractions(cfg, identifierId, null, null);
+			return await GetContactWithInteractions(cfg, source,identifierId, null, null);
 		}
 
-        public async Task<Contact> GetContactWithInteractions(XConnectClientConfiguration cfg, 
+        public async Task<Contact> GetContactWithInteractions(XConnectClientConfiguration cfg, string source,
 			string identifierId, DateTime? interactionStartTime, DateTime? interactionEndTime)
         {
 
@@ -126,7 +126,7 @@ namespace Helixbase.Foundation.XConnect.Repositories
 					}
 
 					//Build up options for the query
-					var reference = new IdentifiedContactReference("twitter", identifierId);
+					var reference = new IdentifiedContactReference(source, identifierId);
 					// Get a known contact
 					existingContact = await client.GetAsync<Contact>(reference, contactOptions);
 					if (existingContact == null)
@@ -195,7 +195,7 @@ namespace Helixbase.Foundation.XConnect.Repositories
 			return contacts;
 		}
 
-        public async Task<Contact> UpdateContact(XConnectClientConfiguration cfg, string identifierId, PersonalInformation updatedPersonalInformation)
+        public async Task<Contact> UpdateContact(XConnectClientConfiguration cfg,string source, string identifierId, PersonalInformation updatedPersonalInformation)
         {
 			_LogRepository.Debug("Updating personal information about Contact with Identifier:" + identifierId);
 
@@ -205,7 +205,7 @@ namespace Helixbase.Foundation.XConnect.Repositories
 
 			//Get the existing contact that we want to update
  
-			var existingContact = await GetContact(cfg, identifierId);
+			var existingContact = await GetContact(cfg, source, identifierId);
 
 			if (existingContact != null)
 			{
@@ -228,6 +228,7 @@ namespace Helixbase.Foundation.XConnect.Repositories
 							try
 							{
 								client.SetFacet<PersonalInformation>(existingContact, PersonalInformation.DefaultFacetKey, personalInfoFacet);
+								await client.SubmitAsync();
 							}
 							catch (XdbExecutionException ex)
 							{
@@ -244,6 +245,7 @@ namespace Helixbase.Foundation.XConnect.Repositories
 						try
 						{
 							client.SetFacet<PersonalInformation>(existingContact, PersonalInformation.DefaultFacetKey, updatedPersonalInformation);
+							await client.SubmitAsync();
 						}
 						catch (XdbExecutionException ex)
 						{
@@ -254,7 +256,7 @@ namespace Helixbase.Foundation.XConnect.Repositories
 					//Update the current facet data with the new pieces
 					personalInfoFacet = updatedPersonalInformation;
 				}
-
+				
 				//Output information about the updated contact
 				_LogRepository.Debug("Updated contact information:");
 		 

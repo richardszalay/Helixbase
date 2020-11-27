@@ -119,6 +119,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "XConnect", "XConnect", "{74
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helixbase.Foundation.XConnect", "src\Foundation\XConnect\website\Helixbase.Foundation.XConnect.csproj", "{854B0FDB-6F51-46DF-880A-5669BB641B2A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helixbase.Foundation.XConnect.Tests", "src\Foundation\XConnect\tests\Helixbase.Foundation.XConnect.Tests.csproj", "{83DF927F-03FD-4ED0-8BC9-67E79E88EBD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -229,6 +231,10 @@ Global
 		{854B0FDB-6F51-46DF-880A-5669BB641B2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{854B0FDB-6F51-46DF-880A-5669BB641B2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{854B0FDB-6F51-46DF-880A-5669BB641B2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83DF927F-03FD-4ED0-8BC9-67E79E88EBD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83DF927F-03FD-4ED0-8BC9-67E79E88EBD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83DF927F-03FD-4ED0-8BC9-67E79E88EBD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83DF927F-03FD-4ED0-8BC9-67E79E88EBD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -284,6 +290,7 @@ Global
 		{695B3D5B-0F35-4D86-BD8A-44FEB73AECFD} = {7D4E7B85-C900-4F60-BC51-110B8E8B699A}
 		{7460BAB0-9467-40AF-9184-9FD4F7DCC041} = {C3F57797-2D54-4626-B842-51F30272E972}
 		{854B0FDB-6F51-46DF-880A-5669BB641B2A} = {7460BAB0-9467-40AF-9184-9FD4F7DCC041}
+		{83DF927F-03FD-4ED0-8BC9-67E79E88EBD5} = {7460BAB0-9467-40AF-9184-9FD4F7DCC041}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {845F548C-FD53-4C61-AB7F-953C2225A13B}
