@@ -10,6 +10,8 @@ using System.Text;
 using Sitecore.Mvc.Controllers;
 using System.Web.Mvc;
 using System.Net;
+using Sitecore.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Helixbase.Feature.Analytics.Controllers
 {
@@ -27,29 +29,33 @@ namespace Helixbase.Feature.Analytics.Controllers
 
     
       
-        public ActionResult SayHello()
+        public string SayHello()
         {
             
 
 
 
-            return Content($"This is a test");
+            return $"This is a test";
+        }
+ 
+        [System.Web.Http.HttpPost]
+        public async Task<string> IdentifyContact(ContactDetails data)
+        {
+            Assert.IsNotNull(data, "ContactDetails is null");
+
+           var result  = await _analyticsService.IdentifyContact(data);
+            return result==null ?null : result.Identifier;
         }
 
 
-        
-        
 
- 
-        public ActionResult EndSession()
+
+
+            public string EndSession()
         {
-           
 
             System.Web.HttpContext.Current.Session.Abandon();
-
-
-
-            return Content($"EndSession");
+            return $"EndSession";
         }
 
  

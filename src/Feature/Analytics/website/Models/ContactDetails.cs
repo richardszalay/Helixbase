@@ -7,6 +7,7 @@ namespace Helixbase.Feature.Analytics.Models
 {
     public class ContactDetails
     {
+ 
         public string identifier { get; set; }
 
         public string identifierSource { get; set; }
